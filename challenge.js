@@ -6,10 +6,14 @@ function like() {
     let line = document.getElementById(`${num}`);
     numOfLikes = parseInt(line.getAttribute('name')) + 1;
 
-    line.outerHTML = `<li id = ${num} name = ${numOfLikes}>${num} has ${numOfLikes} likes!</li>`
+    line.outerHTML = createLikeTemplate(num, numOfLikes)
   } else {
-    listParent.innerHTML += `<li id = ${num} name = ${numOfLikes}>${num} has ${numOfLikes} like!</li>`;
+    listParent.innerHTML += createLikeTemplate(num, numOfLikes)
   }
+}
+
+function createLikeTemplate(num, numOfLikes){
+  return `<li id=${num} name=${numOfLikes}>${num} has ${numOfLikes} likes!</li>`;
 }
 
 function incrementCounter(){
@@ -24,7 +28,6 @@ function pause() {
   if(paused === false){
     clearInterval(timerInterval);
     pauseButton.innerText = "play"
-    //  some code to disable all other buttons
     minusButton.disabled = true;
     addButton.disabled = true;
     heartButton.disabled = true;
