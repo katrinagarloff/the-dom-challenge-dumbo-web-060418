@@ -24,10 +24,19 @@ function pause() {
   if(paused === false){
     clearInterval(timerInterval);
     pauseButton.innerText = "play"
+    //  some code to disable all other buttons
+    minusButton.disabled = true;
+    addButton.disabled = true;
+    heartButton.disabled = true;
+    commentForm.querySelector('button').disabled = true;
     paused = true;
   } else {
     timerInterval = setInterval(incrementCounter, 1000);
     pauseButton.innerText = "pause"
+    minusButton.disabled = false;
+    addButton.disabled = false;
+    heartButton.disabled = false;
+    commentForm.querySelector('button').disabled = false;
     paused = false;
   }
 }
@@ -51,7 +60,6 @@ const commentsList = document.querySelector('.comments#list')
 
 let timerInterval = setInterval(incrementCounter, 1000);
 let paused = false;
-
 
 heartButton.addEventListener('click', like);
 minusButton.addEventListener('click', decrementCounter);
